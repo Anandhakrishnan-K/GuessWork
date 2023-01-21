@@ -54,7 +54,7 @@ else:
         else:
             score-=40
             giveup=input(("That is not a correct Number, Want to GiveUp ? (y/n):"))
-    if (giveup=='y'):
+    if (giveup=='y' or score <= 0):
         countdown(10)
 
         
