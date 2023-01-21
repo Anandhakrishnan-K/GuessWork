@@ -1,8 +1,8 @@
 import random
 import time
 
-a=int(random.randrange(0,90,10))
-b=a+10
+a=int(random.randrange(0,80,10))
+b=a+20
 n=random.randint(a,b) # Generating Random Number between 0 to 100
 
 def clue1(n): # Finding the First Number
@@ -13,29 +13,50 @@ def clue1(n): # Finding the First Number
     return tmp
 
 
-def clue2(n): # Finding Multiples of N
+def clue(n): # Finding Multiples of N
     l=[]
-    for i in range(1,9):
+    for i in range(2,int(n/2)):
         if(n%i)==0:
             l.append(i)
-    return l
+    if(len(l)==0):
+        print("and its a prime Number")
+    else:
+        print("and the Number is a Multiples of: ",l)
 
 def countdown(t): # Printing Countdown
     
     while t:
         timer = '{:02d}'.format(t) # Formatting to display in 2 digits 
-        print("Reveling the Next Clue in: "+timer,end='\r')
+        print("Reveling Number in: "+timer,end='\r')
         time.sleep(1)
         t -= 1
-    print()
+    print("The Number you missed to Guess is: ",n)
 
-print("Guess the Random Number between "+a+" and "+b)
 
-nin=int(input())
+print("There is one Random Number generated between ",a," and ",b)
+clue(n)
+score=100
+nin=int(input("Guess the Random Number: ")) # Receiving the First Guess
 if (n==nin):
-    print("Congrats")
+    print("Congrats you have found the correct Number")
+    print("You Got ",score," Percentage !!!!")
 else:
-    print("Second Clue : The Nuber starting with ",clue1(n))
+    score-=20
+    giveup=input(("That is not a correct Number, Want to GiveUp ? (y/n):"))
+    if giveup.lower()=='n':
+        print("One more clue for you, the Number ending with: ",n%10)
+    while(giveup.lower()!='y' and score > 0):
+        nin=int(input("Guess the Random Number: ")) # Receiving the following guesses
+        if (n==nin):
+            print("Congrats you have found the correct Number")
+            print("You Got ",score," Percentage !!!!")
+            break
+        else:
+            score-=40
+            giveup=input(("That is not a correct Number, Want to GiveUp ? (y/n):"))
+    if (giveup=='y'):
+        countdown(10)
 
+        
 
 
