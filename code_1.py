@@ -29,7 +29,7 @@ def countdown(t): # Printing Countdown
     print("The Number you missed to Guess is: ",n)
 
 
-
+# Main Code 
 
 onemore='y'
 while (onemore.upper()!='N'):
@@ -61,6 +61,7 @@ while (onemore.upper()!='N'):
         if (giveup=='y' or score == 0):
             countdown(10)
     onemore=input("Want to try one more ? (y/n): ")
+print("Have a Nice Day")
         
 
 
